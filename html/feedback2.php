@@ -27,22 +27,25 @@ if (isset($_GET['mood']))
 	}
 }
 
-include "includes/template_feedback2.php";
-
-//write the mood information to the database
+//process input
 $tid = isset($_GET['tid'])?(int)$_GET['tid']:null;
 $csid = isset($_GET['csid'])?(int)$_GET['csid']:null;
 $hash = isset($_GET['hash'])?db_clean_input($_GET['hash']):null;
 
+include "includes/template_feedback2.php";
+
+//write to db
 if (validate_hash($tid, $csid, $hash))
 {
 	# validate will effectively also check if all the params are
 	# set (otherwise it wouldn't validate). so we don't check if
-	# there are values to store
+	# there are values to store.
+	# @TODO: actually -- it doesn't check the mood is okay. this is
+	# should be fixed later (validate input)
 	store_feedback($tid, $csid, $mood);
 }
 else
 {
-	echo "failed to validate, so not writing";
+	//echo "failed to validate, so not writing";
 }
 ?>

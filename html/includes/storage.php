@@ -6,7 +6,7 @@ function create_tables()
 	global $database;
 	
 	$query = 
-	  'CREATE TABLE feedback (tid INTEGER, csid INTEGER, mood TEXT, date TEXT) ';
+	  'CREATE TABLE feedback (tid INTEGER, csid INTEGER, mood TEXT, date TEXT, longfeedback TEXT) ';
 		
 	if(!$database->queryExec($query, $error))
 	{
@@ -47,6 +47,32 @@ function store_feedback($ticket_id, $customer_service_representative, $mood)
 			//create_tables();
 		 	die($error);
 		}
+	}
+}
+
+function store_long_feedback($ticket_id, $long_feedback)
+{
+	global $database;
+	
+	$ticket_id = db_clean_input($ticket_id);
+	$long_feedback = db_clean_input(long_feedback);
+		
+	# First let's check if anything's been recorded for this ticket_id
+	$sql = 'SELECT COUNT(*) AS count FROM feedback WHERE tid=' . $ticket_id;
+	$result = $database->query($sql);
+
+	$a = $result->fetch(SQLITE_ASSOC);
+	//print_r($a);
+	if ($a['count'] > 0)
+	{
+		# it exists, so just update the existing one. if it is in the db multiple times, this
+		# won't fix it.
+		$sql = 'UPDATE feedback SET longfeedback = "' . $long_feedback . '" WHERE tid = "' . $ticket_id . '"';
+		$database->queryExec($sql);
+	}
+	else
+	{
+		//don't store feedback if there is no short feedback associated with this ticket
 	}
 }
 

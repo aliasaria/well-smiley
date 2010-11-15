@@ -14,7 +14,11 @@ function convert_to_nickname($name)
 	}
 }
 
-
+# returns array with following keys:
+#  - count
+#  - positive
+#  - percent_positive
+#  (@TODO)- most_recent_feedback
 function get_stats_for($feedback)
 {
 	$stats = array();

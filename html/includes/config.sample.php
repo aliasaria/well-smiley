@@ -31,4 +31,17 @@ $nicknames['29'] = 'Katie';
 $nicknames['2']  = 'Jenessa';
 $nicknames['5']  = 'Ali';
 $nicknames['30'] = 'Jim';
+
+
+
+
+
+#=============================
+# AUTH for report.php
+# 
+#=============================
+define('REPORT_USER_NAME', 'admin');
+define('REPORT_PASSWORD', 'password');
+
+
 ?>

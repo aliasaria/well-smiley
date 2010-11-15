@@ -29,6 +29,8 @@
 						break;
 							
 					default:
+						//this shoudn't happen
+						echo 'Thanks for your feedback!';
 						break;
 				}
 				?>
@@ -38,9 +40,11 @@
    		<div class="post">
 			<div class="quote">
 					<center>
-					<form method="POST" action="">
+					<form method="POST" action="feedback3.php">
 					<textarea name="comments" cols=50 rows=8></textarea><br />
 					<input type="submit" value="Submit" />
+					
+					<input type="hidden" name="tid" value="<?= intval($tid) ?>">
 					</form>
 					</center>
 			</div><!-- quote -->   
