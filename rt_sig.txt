@@ -1,0 +1,5 @@
+The following is a signature you can add to RT3 Templates to make it work with smiley
+---------------------------
+Did we do a good job on customer service? Please let us know by clicking on the following link:
+
+http://smiley.well.ca/feedback.php?tid={$Ticket->id}&csid={$Transaction->Creator}&hash={ $md5 = Digest::MD5->new; $md5->add($Ticket->id, $Transaction->Creator, 'YOURSALTSTRINGHERE' ); $digest = $md5->hexdigest; substr($digest,0,6); }
