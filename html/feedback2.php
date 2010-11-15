@@ -32,11 +32,11 @@ $tid = isset($_GET['tid'])?(int)$_GET['tid']:null;
 $csid = isset($_GET['csid'])?(int)$_GET['csid']:null;
 $hash = isset($_GET['hash'])?db_clean_input($_GET['hash']):null;
 
-include "includes/template_feedback2.php";
 
 //write to db
 if (validate_hash($tid, $csid, $hash))
 {
+	include "includes/template_feedback2.php";
 	# validate will effectively also check if all the params are
 	# set (otherwise it wouldn't validate). so we don't check if
 	# there are values to store.
@@ -46,6 +46,8 @@ if (validate_hash($tid, $csid, $hash))
 }
 else
 {
+	//didn't validate -- don't store anything and just say default thanks
+	echo "Thanks for your feedback!";
 	//echo "failed to validate, so not writing";
 }
 ?>

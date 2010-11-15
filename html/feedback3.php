@@ -20,8 +20,11 @@ include "includes/validation.php";
 <?php
 //write this comment to the db
 $tid = isset($_POST['tid'])?(int)$_POST['tid']:null;
-//$csid = isset($_GET['csid'])?(int)$_GET['csid']:null;
-//$hash = isset($_GET['hash'])?db_clean_input($_GET['hash']):null;
+$csid = isset($_POST['csid'])?(int)$_POST['csid']:null;
+$hash = isset($_POST['hash'])?db_clean_input($_POST['hash']):null;
 
-store_long_feedback($tid, $comments)
+if (validate_hash($tid, $csid, $hash))
+{
+	store_long_feedback($tid, $comments);
+}
 ?>

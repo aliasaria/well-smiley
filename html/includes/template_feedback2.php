@@ -44,7 +44,9 @@
 					<textarea name="comments" cols=50 rows=8></textarea><br />
 					<input type="submit" value="Submit" />
 					
-					<input type="hidden" name="tid" value="<?= intval($tid) ?>">
+					<input type="hidden" name="tid" value="<?= htmlspecialchars($tid) ?>">
+					<input type="hidden" name="csid" value="<?= htmlspecialchars($csid) ?>">
+					<input type="hidden" name="hash" value="<?= htmlspecialchars($hash) ?>">
 					</form>
 					</center>
 			</div><!-- quote -->   
