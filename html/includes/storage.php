@@ -55,7 +55,7 @@ function store_long_feedback($ticket_id, $long_feedback)
 	global $database;
 	
 	$ticket_id = db_clean_input($ticket_id);
-	$long_feedback = db_clean_input(long_feedback);
+	$long_feedback = db_clean_input($long_feedback);
 		
 	# First let's check if anything's been recorded for this ticket_id
 	$sql = 'SELECT COUNT(*) AS count FROM feedback WHERE tid=' . $ticket_id;

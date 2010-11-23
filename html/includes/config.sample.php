@@ -1,5 +1,15 @@
 <?php
 
+#=============================
+# DATABASE_LOCATION
+# 
+# Set this to the location where you want the
+# sqlite database to exist. The directory in
+# in which the database resides must be
+# writeable (not just the database itself)
+#=============================
+define("DATABASE_LOCATION", '../db/db.sqlite');
+
 
 #=============================
 # USE_VALIDATION

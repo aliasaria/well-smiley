@@ -1,3 +1,3 @@
-db.sqlite
 .DS_Store
 html/includes/config.php
+db/db.sqlite
